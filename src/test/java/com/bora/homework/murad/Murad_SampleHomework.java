@@ -1,4 +1,4 @@
-package com.bora.homework;
+package com.bora.homework.murad;
 
 import org.openqa.selenium.WebDriver;
 
