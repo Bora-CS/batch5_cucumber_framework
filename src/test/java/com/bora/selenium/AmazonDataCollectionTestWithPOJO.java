@@ -90,6 +90,7 @@ public class AmazonDataCollectionTestWithPOJO {
 				currentRow.createCell(2).setCellValue(result.title);
 			}
 
+			
 			workbook.write(fos);
 			workbook.close();
 			fos.close();
