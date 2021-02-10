@@ -1,12 +1,12 @@
 @ui
 Feature: Bora Community
-	
-  Scenario: Log in happy path
-    Given I'm on the Bora Community homepage
-    When I click on login button
-    And I log in with email "murad@test.com" and password "murad001"
-    Then I should be on the dashboard page
-	
+
+  #Scenario: Log in happy path
+  #Given I'm on the Bora Community homepage
+  #When I click on login button
+  #And I log in with email "murad@test.com" and password "murad001"
+  #Then I should be on the dashboard page
+  
   Scenario Outline: Log in error scenarios
     Given I'm on the Bora Community homepage
     When I click on login button
@@ -18,5 +18,3 @@ Feature: Bora Community
       | email            | password   |
       | murad@test33.com | murad001   |
       | murad@test.com   | murad00333 |
-      |                  | murad001   |
-      | murad@test.com   |            |

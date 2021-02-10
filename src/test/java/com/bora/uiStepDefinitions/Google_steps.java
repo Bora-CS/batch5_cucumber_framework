@@ -1,14 +1,10 @@
-package com.bora.cucumber;
+package com.bora.uiStepDefinitions;
 
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
-import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-import static org.junit.Assert.*;
-import static org.testng.Assert.assertTrue;
+import org.junit.Assert;
 
 import java.util.List;
 
@@ -20,19 +16,9 @@ import org.openqa.selenium.WebElement;
 
 import com.bora.utilities.DriverFactory;
 
-public class StepDefinitions {
-
-	public WebDriver driver = null;
-
-	@Before("@ui and not @api")
-	public void setUp() {
-		driver = DriverFactory.getInstance();
-	}
-
-	@After("@ui and not @api")
-	public void cleanUp() {
-		DriverFactory.cleanUp();
-	}
+public class Google_steps {
+	
+	private WebDriver driver = DriverFactory.getInstance();
 
 	@Given("I'm on the google.com homepage")
 	public void i_m_on_the_google_com_homepage() {
@@ -49,9 +35,9 @@ public class StepDefinitions {
 	public void i_should_be_navigated_to_the_search_result_page() {
 		try {
 			WebElement stats = driver.findElement(By.id("result-stats"));
-			assertTrue(stats.isDisplayed(), "Result stats is not displayed");
+			Assert.assertTrue("Result stats is not displayed", stats.isDisplayed());
 		} catch (NoSuchElementException e) {
-			assertTrue(false, "Result stats element is not found");
+			Assert.assertTrue("Result stats element is not found", false);
 		}
 	}
 
@@ -64,7 +50,7 @@ public class StepDefinitions {
 				count++;
 			}
 		}
-		assertTrue(count >= 3, "Found less than 3 results that's related to " + searchString);
+		Assert.assertTrue("Found less than 3 results that's related to " + searchString, count >= 3);
 	}
 
 }
