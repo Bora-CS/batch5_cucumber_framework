@@ -21,6 +21,12 @@ public class BoraKeywrod_Library {
 
 		clickElement(By.xpath("//input[@type='submit']"));
 	}
+	public void openUrl(String url) {
+		driver.get(url);
+	}
+	public String getUrl() {
+		return driver.getCurrentUrl();
+	}
 
 	public void elementSendKey(By locator, String data) {
 
