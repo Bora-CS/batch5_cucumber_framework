@@ -15,33 +15,36 @@ import com.bora.utilities.DriverFactory;
 import com.bora.utilities.UI_Utils;
 
 public class BoraCommunity_steps {
-	
-	private WebDriver driver = DriverFactory.getInstance();
-	private BoraKeyword_library lib = new BoraKeyword_library(driver);
+
+	private BoraKeyword_library lib = new BoraKeyword_library(DriverFactory.getInstance());// (driver)==need to create
+																							// constructor
+
+	By editProfileLink = By.xpath("//*[@href='/edit-profile']");
+	String editProfilePageUrl = "https://boratech.herokuapp.com/edit-profile";
 
 	@Given("I'm on the Bora Community homepage")
 	public void i_m_on_the_bora_community_homepage() {
-	
-		driver.get("https://boratech.herokuapp.com/");
+
+		lib.openUrl("https://boratech.herokuapp.com/");
 	}
 
 	@When("I click on login button")
 	public void i_click_on_login_button() {
 		lib.clickElement(By.linkText("Login"));
-		//lib.getElement(By.linkText("Login")).click();
-		//diver.findElement(By.linkText("Login")).click();
+		// lib.getElement(By.linkText("Login")).click();
+		// diver.findElement(By.linkText("Login")).click();
 	}
 
 	@When("I log in with email {string} and password {string}")
 	public void i_log_in_with_email_and_password(String userEmail, String userPassword) throws InterruptedException {
-	
-		lib.login(userEmail,userPassword);
+
+		lib.login(userEmail, userPassword);
 		UI_Utils.waitFor(1);
 	}
 
 	@Then("I should still be on the login page")
 	public void i_should_still_be_on_the_login_page() {
-		String actualUrl = driver.getCurrentUrl();
+		String actualUrl = lib.getUrl();
 		String expectedUrl = "https://boratech.herokuapp.com/login";
 		Assert.assertEquals(expectedUrl, actualUrl);
 	}
@@ -53,5 +56,26 @@ public class BoraCommunity_steps {
 		String actualAlertText = alert.getText();
 		Assert.assertEquals(expectedAlertText, actualAlertText);
 	}
+
+	@When("I click on Edit Profile link")
+	public void i_click_on_edit_profile_link() {
+		lib.clickElement(editProfileLink);
+
+	}
+
+	@Then("The edit profile page shold display")
+	public void the_edit_profile_page_shold_display() {
+
+		Assert.assertTrue(lib.compareUrl(editProfilePageUrl));
+	}
+//	@When("I click on add education link")
+//	public void i_click_on_add_education_link() {
+//	  lib.clickElement(By.linkText(" Add Education"));
+//	}
+//
+//	@Then("The add education page shold display")
+//	public void the_add_education_page_shold_display() {
+//	   
+//	}
 
 }
