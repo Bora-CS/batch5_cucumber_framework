@@ -1,4 +1,4 @@
-package com.bora.cucumber;
+package com.bora.apiStepDefinitions;
 
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.Before;
