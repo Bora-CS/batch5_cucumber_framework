@@ -7,6 +7,14 @@ Feature: Bora Community
   #And I log in with email "murad@test.com" and password "murad001"
   #Then I should be on the dashboard page
   
+  Scenario: Verify create profile page
+  Given I'm on the Bora Community homepage
+  When I click on login button
+  And I log in with email "xianghchen0704@gmail.com" and password "Cx704704"
+  And I click on Edit Profile Link
+  Then The edit profile page should display
+  
+  
   Scenario Outline: Log in error scenarios
     Given I'm on the Bora Community homepage
     When I click on login button
