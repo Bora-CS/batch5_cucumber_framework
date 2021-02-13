@@ -20,6 +20,8 @@ public class BoraCommunity_steps {
 	private WebDriver driver = DriverFactory.getInstance();
 
 	private BoraKeyword_library lib = new BoraKeyword_library(driver);
+	By editProfileLink = By.xpath("updateLater");
+	String 
 
 	@Given("I'm on the Bora Community homepage")
 	public void i_m_on_the_bora_community_homepage() {
@@ -48,9 +50,7 @@ public class BoraCommunity_steps {
 		Assert.assertEquals(expectedUrl, actualUrl);
 		
 	}
-	//And I click on Edit Profile Link
-	
-	
+
 
 	@Then("I will see an error message that says {string}")
 	public void i_will_see_an_error_message_that_says(String expectedAlertText) {
@@ -59,5 +59,23 @@ public class BoraCommunity_steps {
 		String actualAlertText = alert.getText();
 		Assert.assertEquals(expectedAlertText, actualAlertText);
 	}
+	//And I click on Edit Profile Link
+	
+		@When("I click on Edit Profile Link")
+		public void i_click_on_edit_profile_link() {
+			driver.findElement(By.linkText("Login")).click();
+			lib.clickElement(By.linkText(ProfileLinkUpdateLater);
+		    // Write code here that turns the phrase above into concrete actions
+		    throw new io.cucumber.java.PendingException();
+		}
 
+		@Then("The edit profile page should display")
+		public void the_edit_profile_page_should_display() {
+			
+			String actualUrl = lib.getUrl();
+			driver.findElement(By.linkText("Login")).click();
+			lib.clickElement(By.linkText("Login"));
+		    // Write code here that turns the phrase above into concrete actions
+		    throw new io.cucumber.java.PendingException();
+		}
 }
