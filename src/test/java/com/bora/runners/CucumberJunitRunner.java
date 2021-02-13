@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		tags = "@ui",
+		tags = "@ui or @api",
 		plugin = { "pretty", "html:target/htmlReports/report.html" }, 
 		features = { "src/test/resources/featureFiles" }, 
 		glue = {"com.bora.apiStepDefinitions", "com.bora.uiStepDefinitions", "com.bora.hooks" },
