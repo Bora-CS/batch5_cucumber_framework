@@ -7,7 +7,6 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.bora.utilities.BoraKeyword_library;
@@ -16,12 +15,11 @@ import com.bora.utilities.UI_Utils;
 
 public class BoraCommunity_steps {
 	
-	private WebDriver driver = DriverFactory.getInstance();
-	private BoraKeyword_library lib = new BoraKeyword_library(driver);
-
+	private BoraKeyword_library lib = new BoraKeyword_library(DriverFactory.getInstance());
+	
 	@Given("I'm on the Bora Community homepage")
 	public void i_m_on_the_bora_community_homepage() {
-		driver.get("https://boratech.herokuapp.com/");
+		lib.openUrl("https://boratech.herokuapp.com/");
 	}
 
 	@When("I click on login button")
@@ -38,7 +36,8 @@ public class BoraCommunity_steps {
 
 	@Then("I should still be on the login page")
 	public void i_should_still_be_on_the_login_page() {
-		String actualUrl = driver.getCurrentUrl();
+		
+		String actualUrl =lib.getUrl();
 		String expectedUrl = "https://boratech.herokuapp.com/login";
 		Assert.assertEquals(expectedUrl, actualUrl);
 	}
@@ -50,5 +49,13 @@ public class BoraCommunity_steps {
 		String actualAlertText = alert.getText();
 		Assert.assertEquals(expectedAlertText, actualAlertText);
 	}
+	@When("I click the Edit Profile link")
+	public void i_click_the_edit_profile_link() {
+	  lib.clickElement(By.xpath("//a[text()=' Edit Profile']"));
+	}
 
+	@Then("The edit profile page should be displayed")
+	public void the_edit_profile_page_should_be_displayed() {
+	 Assert.assertTrue(lib.getElement(By.xpath("//h1[text()='Create Your Profile']")).isDisplayed());
+	}
 }

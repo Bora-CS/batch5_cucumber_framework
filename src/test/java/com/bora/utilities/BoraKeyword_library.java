@@ -30,5 +30,15 @@ public class BoraKeyword_library {
 		clickElement(By.xpath("//input[@type='submit']"));
 
 	}
+	
+	public void openUrl (String url) {
+		driver.get(url);
+	}
+	public String getUrl(){
+		return driver.getCurrentUrl();
+	}
 
+	public String getTitle() {
+		return driver.getTitle();
+	}
 }
