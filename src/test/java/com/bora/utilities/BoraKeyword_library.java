@@ -61,10 +61,10 @@ public class BoraKeyword_library {
 	}
 
 	public boolean compareUrl(String expectingUrl) {
-		String actural = getUrl();
-//		System.out.println("currentUrl: is "+actural);
+		String actual = getUrl();
+//		System.out.println("currentUrl: is "+actual);
 //		System.out.println("expectingUrl: is "+expectingUrl);
-		return actural.equals(expectingUrl);
+		return actual.equals(expectingUrl);
 	}
 
 }

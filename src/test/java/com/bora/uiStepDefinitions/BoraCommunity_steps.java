@@ -18,9 +18,12 @@ public class BoraCommunity_steps {
 
 	private BoraKeyword_library lib = new BoraKeyword_library(DriverFactory.getInstance());// (driver)==need to create
 																							// constructor
-
+	By loginButton = By.linkText("Login");
+	By loginPage_erroMessage = By.xpath("//div[@class='alert alert-danger']");
 	By editProfileLink = By.xpath("//*[@href='/edit-profile']");
+	By addEducationLink = By.xpath("//*[@href='/add-education\']");
 	String editProfilePageUrl = "https://boratech.herokuapp.com/edit-profile";
+	String addEucationPageUrl = "https://boratech.herokuapp.com/add-education";
 
 	@Given("I'm on the Bora Community homepage")
 	public void i_m_on_the_bora_community_homepage() {
@@ -30,7 +33,7 @@ public class BoraCommunity_steps {
 
 	@When("I click on login button")
 	public void i_click_on_login_button() {
-		lib.clickElement(By.linkText("Login"));
+		lib.clickElement(loginButton);
 		// lib.getElement(By.linkText("Login")).click();
 		// diver.findElement(By.linkText("Login")).click();
 	}
@@ -51,7 +54,7 @@ public class BoraCommunity_steps {
 
 	@Then("I will see an error message that says {string}")
 	public void i_will_see_an_error_message_that_says(String expectedAlertText) {
-		WebElement alert = lib.getElement(By.xpath("//div[@class='alert alert-danger']"));
+		WebElement alert = lib.getElement(loginPage_erroMessage);
 		Assert.assertTrue(alert.isDisplayed());
 		String actualAlertText = alert.getText();
 		Assert.assertEquals(expectedAlertText, actualAlertText);
@@ -60,22 +63,21 @@ public class BoraCommunity_steps {
 	@When("I click on Edit Profile link")
 	public void i_click_on_edit_profile_link() {
 		lib.clickElement(editProfileLink);
-
 	}
 
-	@Then("The edit profile page shold display")
+	@Then("The edit profile page should display")
 	public void the_edit_profile_page_shold_display() {
-
 		Assert.assertTrue(lib.compareUrl(editProfilePageUrl));
 	}
-//	@When("I click on add education link")
-//	public void i_click_on_add_education_link() {
-//	  lib.clickElement(By.linkText(" Add Education"));
-//	}
-//
-//	@Then("The add education page shold display")
-//	public void the_add_education_page_shold_display() {
-//	   
-//	}
+
+	@When("I click on add education link")
+	public void i_click_on_add_education_link() {
+		lib.clickElement(addEducationLink);
+	}
+
+	@Then("The add education page should display")
+	public void the_add_education_page_shold_display() {
+		Assert.assertTrue(lib.compareUrl(addEucationPageUrl));
+	}
 
 }
