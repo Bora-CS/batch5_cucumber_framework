@@ -56,6 +56,48 @@ public class BoraCommunity_steps {
 
 	@Then("The edit profile page should be displayed")
 	public void the_edit_profile_page_should_be_displayed() {
-	 Assert.assertTrue(lib.getElement(By.xpath("//h1[text()='Create Your Profile']")).isDisplayed());
+	 Assert.assertTrue(lib.isDisplay(By.xpath("//h1[text()='Create Your Profile']")));
 	}
+	@When("I click the post link")
+	public void i_click_the_post_link() {
+	    lib.clickElement(By.xpath("//a[text()='Posts']"));
+	}
+
+	@Then("The post should be displayed")
+	public void the_post_should_be_displayed() {
+		 Assert.assertTrue(lib.isDisplay(By.xpath("//h1[text()='Posts']")));
+		
+	}
+	@Given("I logged into the bora community")
+	public void i_logged_into_the_bora_community_and_i_am_on_the_post_page() throws InterruptedException {
+		lib.openUrl("https://boratech.herokuapp.com/");
+		lib.clickElement(By.linkText("Login"));
+		lib.login("lilywang0427@gmail.com", "Xiaohulideai123l");
+		UI_Utils.waitFor(1);
+	}
+
+	@When("I click on the post button we are on the post page")
+	public void i_click_on_the_create_a_post_box() {
+		lib.clickElement(By.xpath("//a[text()='Posts']"));
+	}
+
+	@When("put in the {string} message in create a post box")
+	public void put_in_the_message_in(String postMessage) {
+		lib.sumbitKey(By.xpath("//textarea[@name ='text']"),postMessage);
+	}
+
+	@When("I click the sumbit button")
+	public void i_click_the_sumbit_button() {
+		lib.clickElement(By.xpath("//input[@type ='submit']"));
+	}
+
+	@Then("The {string} alert should appear")
+	public void the_alert_should_appare(String expectedAlert) {
+		WebElement alert = lib.getElement(By.xpath("//div[@class='alert alert-success']"));
+		Assert.assertTrue(alert.isDisplayed());
+		String actualAlertText = alert.getText();
+		Assert.assertEquals(expectedAlert, actualAlertText);
+	}
+
+
 }

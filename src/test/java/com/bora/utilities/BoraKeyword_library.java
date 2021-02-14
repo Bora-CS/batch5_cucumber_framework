@@ -41,4 +41,7 @@ public class BoraKeyword_library {
 	public String getTitle() {
 		return driver.getTitle();
 	}
+	public boolean isDisplay(By loactor){
+		return getElement(loactor).isDisplayed();
+	}
 }
