@@ -19,5 +19,5 @@ Feature: Bora Community
       | email            | password   |
       | murad@test33.com | murad001   |
       | murad@test.com   | murad00333 |
-      | murad@test.com   | murad001   |
+
       
