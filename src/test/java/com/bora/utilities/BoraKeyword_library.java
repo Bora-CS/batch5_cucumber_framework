@@ -1,5 +1,7 @@
 package com.bora.utilities;
 
+import java.util.Properties;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,7 +9,6 @@ import org.openqa.selenium.WebElement;
 public class BoraKeyword_library {
 
 	private WebDriver driver; // default value is null
-	
 	
 
 	public BoraKeyword_library(WebDriver driver) {

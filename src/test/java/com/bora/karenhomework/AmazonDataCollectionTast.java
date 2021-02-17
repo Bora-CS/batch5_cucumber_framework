@@ -1,6 +1,7 @@
 package com.bora.karenhomework;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -37,6 +38,26 @@ public class AmazonDataCollectionTast {
 			searchField.sendKeys(itemToSearch);
 			searchField.submit();
 
+			String containerXpath="(//div[@data-component-type='s-search-result'])";
+			String titalXpath="//h2[@class='a-size-mini a-spacing-none a-color-base s-line-clamp-2']";
+			String priceXpath="//span[@class='a-price']";
+			
+			int numberOfResults = driver.findElements(By.xpath(containerXpath)).size();
+			for (int i = 1; i < numberOfResults; i++) {
+				String title;
+				String price;
+				try {
+					title=driver.findElement(By.xpath(containerXpath+"["+i+"]"+titalXpath)).getText();
+				} catch (NoSuchElementException e) {
+					continue;
+				}
+				
+				
+				
+				
+				
+				
+			}
 		} catch (Exception e) {
 
 		} finally {
