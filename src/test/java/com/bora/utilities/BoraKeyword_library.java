@@ -6,11 +6,27 @@ import org.openqa.selenium.WebElement;
 
 public class BoraKeyword_library {
 
-<<<<<<< HEAD
-	private WebDriver driver;
+
+	private WebDriver driver;// default value is null
+	private PropertyReader reader = new PropertyReader();
 
 	public BoraKeyword_library(WebDriver driverWithValue) {
 		this.driver = driverWithValue; 
+	}
+	public By getLocator (String key){
+		return reader.readLocator(key);
+	}
+	public String getURLFromDataReader (String key){
+		return reader.readURL(key);
+	}
+	public String getUserEmail (String key){
+		return reader.userEmail(key);
+	}
+	public String getUserPassword (String key){
+		return reader.userPassword(key);
+	}
+	public String getPost (String key){
+		return reader.postMessage(key);
 	}
 
 	public WebElement getElement(By locator) {
@@ -27,35 +43,10 @@ public class BoraKeyword_library {
 
 	public void login(String userName, String password) {
 		sumbitKey(By.name("email"), userName);
-		sumbitKey(By.name("password"), password);
-=======
-	private WebDriver driver; // default value is null
-	
+		sumbitKey(By.name("password"), password);}
+
 	
 
-	public BoraKeyword_library(WebDriver driver) {
-		this.driver = driver;
-	}
-
-
-	public void login(String userName, String password) {
-
-		elementSendKey(By.name("email"), userName);
-
-		elementSendKey(By.name("password"), password);
-
->>>>>>> main
-		clickElement(By.xpath("//input[@type='submit']"));
-
-	}
-	
-<<<<<<< HEAD
-	public void openUrl (String url) {
-		driver.get(url);
-	}
-	public String getUrl(){
-		return driver.getCurrentUrl();
-	}
 
 	public String getTitle() {
 		return driver.getTitle();
@@ -63,7 +54,7 @@ public class BoraKeyword_library {
 	public boolean isDisplay(By loactor){
 		return getElement(loactor).isDisplayed();
 	}
-=======
+
 	
 	
 	public void openUrl(String url) {
@@ -80,13 +71,7 @@ public class BoraKeyword_library {
 		getElement(locator).sendKeys(data);
 	}
 
-	public WebElement getElement(By locator) {
-		return driver.findElement(locator);
-	}
-
-	public void clickElement(By locator) {
-		getElement(locator).click();
-	}
+	
 	
 	public boolean compareUrl(String expectingUrl) {
 		String actualUrl = getUrl();
@@ -99,5 +84,5 @@ public class BoraKeyword_library {
 	
 	
 
->>>>>>> main
+
 }
