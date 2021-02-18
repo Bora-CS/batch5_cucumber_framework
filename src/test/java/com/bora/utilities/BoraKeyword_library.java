@@ -7,14 +7,22 @@ import org.openqa.selenium.WebElement;
 public class BoraKeyword_library {
 
 	private WebDriver driver;// default value is null
+	private PropertyReader reader = new PropertyReader(null);
 
-    //one way:
-	//	public BoraKeyword_library(WebDriver driverWithValue) {
-	//	driver = driverWithValue;
+	// one way:
+	// public BoraKeyword_library(WebDriver driverWithValue) {
+	// driver = driverWithValue;
 	// Second way:
-	public BoraKeyword_library(WebDriver driver){
-	this.driver =driver; 
+	public BoraKeyword_library(WebDriver driver) {
+		this.driver = driver;
 
+	}
+
+	public By getLocator(String key) {
+		return reader.locatorReader(key);
+	}
+	public String getUrlFromDatReader(String key) {
+		return reader.userData()
 	}
 
 	public void login(String userName, String password) {
