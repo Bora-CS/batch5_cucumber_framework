@@ -18,13 +18,20 @@ public class BoraCommunity_steps {
 
 	private BoraKeyword_library lib = new BoraKeyword_library(DriverFactory.getInstance());
 
+	
+	
+	
 	By editProfileLink = By.xpath("//*[@href=\"/edit-profile\"]");
 	By loginButton = By.linkText("Login");
 	By loginPage_errorMessage = By.xpath("//div[@class='alert alert-danger']");
 
-	String editProfilePageURL = "https://boratech.herokuapp.com/edit-profile";
-	String loginPageURL = "https://boratech.herokuapp.com/login";
+	String editProfilePageURL = lib.getUrlFromDataReader("editProfilePageURL");
+	String loginPageURL = lib.getUrlFromDataReader("loginPageURL");
 
+	
+	
+	
+	
 	@Given("I'm on the Bora Community homepage")
 	public void i_m_on_the_bora_community_homepage() {
 		lib.openUrl("https://boratech.herokuapp.com/");

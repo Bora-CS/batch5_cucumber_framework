@@ -7,14 +7,27 @@ import org.openqa.selenium.WebElement;
 public class BoraKeyword_library {
 
 	private WebDriver driver; // default value is null
-	
-	
+	private PropertyReader reader = new PropertyReader();
+
 
 	public BoraKeyword_library(WebDriver driver) {
 		this.driver = driver;
 	}
 
 
+	public By getLocator(String key) {
+		return reader.locatorReader(key);
+	}
+	
+	public String getUrlFromDataReader(String key) {
+		return reader.urlData(key);
+	}
+	
+	
+	
+	
+	
+	
 	public void login(String userName, String password) {
 
 		elementSendKey(By.name("email"), userName);
