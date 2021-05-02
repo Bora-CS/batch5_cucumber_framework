@@ -22,7 +22,7 @@ public class ExcelUtil {
 
 		try {
 
-			String targetFilePath = "src/test/resources/excels/NewFile.xlsx";
+			String targetFilePath = "src/test/resources/excels/NewFile1.xlsx";
 			File targetFile = new File(targetFilePath);
 			FileOutputStream fos = new FileOutputStream(targetFile);
 
